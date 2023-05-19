@@ -767,7 +767,7 @@ class _CalcState extends State<Calc> {
             width: 10,
           ),
           SizedBox(
-            width: 40,
+            width: 60,
             child: Text("$grade/100",
                 style: Theme.of(context).textTheme.bodySmall),
           ),
