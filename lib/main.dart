@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 int calcBMI(int gender, int age, double? height, double? weight) {
   if (height == null || weight == null) {
@@ -801,6 +802,13 @@ class _CalcState extends State<Calc> {
     });
   }
 
+  final Uri _url = Uri.parse('https://github.com/Clouder0/pecalc');
+  Future<void> _launchUrl() async {
+    if (!await launchUrl(_url)) {
+      throw Exception('Could not launch $_url');
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -930,7 +938,25 @@ class _CalcState extends State<Calc> {
               buildGradeDisplay("长跑", const Icon(Icons.alarm), gradeLongRun),
               buildGradeDisplay("总分", const Icon(Icons.grade), gradeAll),
             ],
-          )
+          ),
+          const Divider(thickness: 1),
+          const Center(
+            child: Text(
+              "Authored by Clouder\n计算结果仅供参考",
+              textAlign: TextAlign.center,
+            ),
+          ),
+          Center(
+            child: TextButton(
+              onPressed: _launchUrl,
+              child: const Text(
+                "Open GitHub Repo",
+                style: TextStyle(
+                  color: Colors.blue,
+                ),
+              ),
+            ),
+          ),
         ],
       ),
     );
