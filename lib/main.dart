@@ -740,24 +740,21 @@ class _CalcState extends State<Calc> {
 
   Widget buildGradeDisplay(String label, Icon icon, int grade) {
     return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 20),
+      padding: const EdgeInsets.symmetric(horizontal: 4),
       child: Row(
         children: [
           SizedBox(
-            width: 120,
+            width: 100,
             child: Row(
-              mainAxisAlignment: MainAxisAlignment.end,
+              mainAxisAlignment: MainAxisAlignment.start,
               children: [
                 Padding(
-                  padding: const EdgeInsets.all(6.0),
+                  padding: const EdgeInsets.all(3.0),
                   child: icon,
                 ),
                 Text(label, style: Theme.of(context).textTheme.bodySmall),
               ],
             ),
-          ),
-          const SizedBox(
-            width: 30,
           ),
           Expanded(
             child: LinearProgressIndicator(
@@ -767,10 +764,10 @@ class _CalcState extends State<Calc> {
             ),
           ),
           const SizedBox(
-            width: 20,
+            width: 10,
           ),
           SizedBox(
-            width: 100,
+            width: 40,
             child: Text("$grade/100",
                 style: Theme.of(context).textTheme.bodySmall),
           ),
@@ -812,72 +809,93 @@ class _CalcState extends State<Calc> {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.symmetric(vertical: 30, horizontal: 100),
+      padding: const EdgeInsets.symmetric(vertical: 30, horizontal: 30),
       child: ListView(
         children: [
           Center(
             child: Text(
               "哈深体测分数计算器",
-              style: Theme.of(context).textTheme.displayMedium,
+              style: Theme.of(context).textTheme.displaySmall,
             ),
           ),
           const SizedBox(
             height: 40,
           ),
-          Row(
+          Column(
             mainAxisAlignment: MainAxisAlignment.center,
+            crossAxisAlignment: CrossAxisAlignment.center,
             children: [
-              Radio(
-                value: 0,
-                groupValue: gender,
-                onChanged: (x) {
-                  setState(() {
-                    gender = x!;
-                    recalc(null);
-                  });
-                },
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Radio(
+                    value: 0,
+                    groupValue: gender,
+                    onChanged: (x) {
+                      setState(() {
+                        gender = x!;
+                        recalc(null);
+                      });
+                    },
+                  ),
+                  const Text("男"),
+                ],
               ),
-              const Text("男"),
               const SizedBox(width: 20),
-              Radio(
-                value: 1,
-                groupValue: gender,
-                onChanged: (x) {
-                  setState(() {
-                    gender = x!;
-                    recalc(null);
-                  });
-                },
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Radio(
+                    value: 1,
+                    groupValue: gender,
+                    onChanged: (x) {
+                      setState(() {
+                        gender = x!;
+                        recalc(null);
+                      });
+                    },
+                  ),
+                  const Text("女"),
+                ],
               ),
-              const Text("女"),
             ],
           ),
-          Row(
+          Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              Radio(
-                value: 0,
-                groupValue: age,
-                onChanged: (x) {
-                  setState(() {
-                    age = x!;
-                    recalc(null);
-                  });
-                },
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Radio(
+                    value: 0,
+                    groupValue: age,
+                    onChanged: (x) {
+                      setState(() {
+                        age = x!;
+                        recalc(null);
+                      });
+                    },
+                  ),
+                  const Text("大一大二"),
+                ],
               ),
-              const Text("大一大二"),
               const SizedBox(width: 20),
-              Radio(
-                value: 1,
-                groupValue: age,
-                onChanged: (x) {
-                  setState(() {
-                    age = x!;
-                    recalc(null);
-                  });
-                },
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Radio(
+                    value: 1,
+                    groupValue: age,
+                    onChanged: (x) {
+                      setState(() {
+                        age = x!;
+                        recalc(null);
+                      });
+                    },
+                  ),
+                  const Text("大三大四"),
+                ],
               ),
-              const Text("大三大四"),
             ],
           ),
           Form(
