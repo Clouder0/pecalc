@@ -727,7 +727,7 @@ class _CalcState extends State<Calc> {
         prefixIcon: icon,
       ),
       controller: controller,
-      keyboardType: TextInputType.number,
+      keyboardType: const TextInputType.numberWithOptions(decimal: true),
       inputFormatters: [
         FilteringTextInputFormatter.allow(RegExp(r"[0-9]|\.")),
       ],
